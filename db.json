@@ -1,0 +1,12 @@
+{
+  "contacts": [
+    {
+      "name": "Daniar",
+      "surName": "Abykeev",
+      "phoneNumber": "+996505777437",
+      "email": "daniarabykeev@gmail.com",
+      "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60",
+      "id": 1
+    }
+  ]
+}
