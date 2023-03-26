@@ -1,12 +1,36 @@
 {
   "contacts": [
     {
-      "name": "Daniar",
-      "surName": "Abykeev",
-      "phoneNumber": "+996505777437",
-      "email": "daniarabykeev@gmail.com",
+      "name": "John",
+      "surName": "Smith",
+      "phoneNumber": "+996777777437",
+      "email": "john-smith@gmail.com",
       "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60",
       "id": 1
+    },
+    {
+      "name": "Bill",
+      "surName": "Gates",
+      "phoneNumber": "797979797955",
+      "email": "dfjhgfdsa@dfghj.com",
+      "photo": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60",
+      "id": 2
+    },
+    {
+      "name": "Ilon",
+      "surName": "Mask",
+      "phoneNumber": "12345678",
+      "email": "mask@gamil.com",
+      "photo": "https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60",
+      "id": 3
+    },
+    {
+      "name": "Bill",
+      "surName": "Clinton",
+      "phoneNumber": "3456782123",
+      "email": "ghjkl@ghj.com",
+      "photo": "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60",
+      "id": 4
     }
   ]
 }

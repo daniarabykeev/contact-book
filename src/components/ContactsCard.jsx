@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,14 +8,15 @@ import { contactsContext } from "../contexts/ContactsContext";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 
-export default function ContactsCard() {
+export default function ContactsCard({ item }) {
   const { contacts, getContacts, deleteContact } =
     React.useContext(contactsContext);
 
-  const theme = useTheme();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     getContacts();
@@ -24,76 +24,89 @@ export default function ContactsCard() {
 
   return (
     <Card sx={{ display: "flex", width: "18rem" }}>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box>
         <CardContent sx={{ flex: "1 0 auto" }}>
-          {contacts.map((item) => {
-            return (
-              <div key={item.id}>
-                <div style={{ display: "flex", marginLeft: "10%" }}>
-                  <div>
-                    <Typography component="div" variant="h5">
-                      {item.name}
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      color="text.secondary"
-                      component="div"
-                    >
-                      {item.surName}
-                    </Typography>
-                  </div>
-                  <div style={{ marginLeft: "10%" }}>
-                    <CardMedia
-                      component="img"
-                      sx={{ width: 120, height: "100%" }}
-                      image={item.photo}
-                      alt="Live from space album cover"
-                    />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+          <div key={item.id}>
+            <div style={{ display: "flex", marginLeft: "10%" }}>
+              <div>
+                <Typography component="div" variant="h5">
+                  {item.name}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="text.secondary"
+                  component="div"
                 >
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginBottom: "-30px",
-                      }}
-                    >
-                      <LocalPhoneIcon />
-                      <h6>{item.phoneNumber}</h6>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <EmailIcon />
-                      <h6>{item.email}</h6>
-                    </div>
+                  {item.surName}
+                </Typography>
+              </div>
+              <div style={{ marginLeft: "10%" }}>
+                <CardMedia
+                  component="img"
+                  sx={{ width: 120, height: "100%" }}
+                  image={item.photo}
+                  alt="Live from space album cover"
+                />
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "-30px",
+                    }}
+                  >
+                    <LocalPhoneIcon />
+                    <h6>{item.phoneNumber}</h6>
                   </div>
-                  <div style={{ position: "relative", left: "40px" }}>
-                    <Button>
-                      <EditIcon />
-                    </Button>
-                    <Button
-                      onClick={(e) => {
-                        deleteContact(item.id);
-                      }}
-                    >
-                      <HighlightOffIcon />
-                    </Button>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <EmailIcon />
+                    <h6>{item.email}</h6>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                marginLeft: "3rem",
+              }}
+            >
+              <Button>
+                <EditIcon
+                  onClick={(e) => {
+                    navigate(`/edit/${item.id}`);
+                  }}
+                />
+              </Button>
+              <Button
+                onClick={(e) => {
+                  deleteContact(item.id);
+                }}
+              >
+                <HighlightOffIcon />
+              </Button>
+            </div>
+          </div>
         </CardContent>
       </Box>
     </Card>

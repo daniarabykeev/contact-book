@@ -7,12 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { contactsContext } from "../contexts/ContactsContext";
@@ -111,76 +106,80 @@ function Navbar() {
                   </Button>
                 </Toolbar>
               </AppBar>
-              {/* <List>
-                <ListItem button>
-                  <ListItemText primary="Phone ringtone" secondary="Titania" />
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemText
-                    primary="Default notification ringtone"
-                    secondary="Tethys"
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <form
+                  action=""
+                  onSubmit={(e) => {
+                    handleSubmit(e);
+                  }}
+                  style={{
+                    marginTop: "50px",
+                    marginLeft: "50px",
+                    display: "flex",
+                    flexDirection: "column",
+                    maxWidth: "700px",
+                  }}
+                >
+                  <TextField
+                    sx={{ marginBottom: "10px" }}
+                    id="outlined-basic"
+                    label="name"
+                    variant="outlined"
+                    name="name"
+                    value={contact.name}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
                   />
-                </ListItem>
-              </List> */}
-              <form
-                action=""
-                onSubmit={(e) => {
-                  handleSubmit(e);
-                }}
-                style={{ marginTop: "50px", marginLeft: "50px" }}
-              >
-                <TextField
-                  id="outlined-basic"
-                  label="name"
-                  variant="outlined"
-                  name="name"
-                  value={contact.name}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <TextField
-                  id="outlined-basic"
-                  label="surName"
-                  variant="outlined"
-                  name="surName"
-                  value={contact.surName}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <TextField
-                  id="outlined-basic"
-                  label="photo"
-                  variant="outlined"
-                  name="photo"
-                  value={contact.photo}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <TextField
-                  id="outlined-basic"
-                  label="phoneNumber"
-                  variant="outlined"
-                  name="phoneNumber"
-                  value={contact.phoneNumber}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <TextField
-                  id="outlined-basic"
-                  label="email"
-                  variant="outlined"
-                  name="email"
-                  value={contact.email}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </form>
+                  <TextField
+                    sx={{ marginBottom: "10px" }}
+                    id="outlined-basic"
+                    label="surName"
+                    variant="outlined"
+                    name="surName"
+                    value={contact.surName}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginBottom: "10px" }}
+                    id="outlined-basic"
+                    label="photo"
+                    variant="outlined"
+                    name="photo"
+                    value={contact.photo}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginBottom: "10px" }}
+                    id="outlined-basic"
+                    label="phoneNumber"
+                    variant="outlined"
+                    name="phoneNumber"
+                    value={contact.phoneNumber}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginBottom: "10px" }}
+                    id="outlined-basic"
+                    label="email"
+                    variant="outlined"
+                    name="email"
+                    value={contact.email}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <Button variant="outlined" onClick={handleSubmit}>
+                    SAVE
+                  </Button>
+                </form>
+              </div>
             </Dialog>
           </div>
         </Toolbar>
