@@ -11,7 +11,10 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { contactsContext } from "../contexts/ContactsContext";
-import { TextField } from "@mui/material";
+import { CardMedia, TextField } from "@mui/material";
+import { authContext } from "../contexts/AuthContext";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -27,6 +30,7 @@ const init = {
 
 function Navbar() {
   const { addContact } = React.useContext(contactsContext);
+  const { user, logout } = React.useContext(authContext);
   const navigate = useNavigate();
   const [contact, setContact] = React.useState(init);
   const [open, setOpen] = React.useState(false);
@@ -58,32 +62,55 @@ function Navbar() {
 
   return (
     <AppBar position="static" sx={{ marginBottom: "50px" }}>
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Toolbar disableGutters>
-          <NavLink style={{ marginRight: "50px" }} to="/">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <HomeIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-              Home
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex" }}>
+              <NavLink style={{ marginRight: "50px" }} to="/">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <HomeIcon
+                    sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                  />
+                  Home
+                </div>
+              </NavLink>
+              {user && user.email === "daniarabykeev@gmail.com" ? (
+                <NavLink onClick={handleClickOpen}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <AddBoxIcon
+                      sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                    />
+                    Add Contact
+                  </div>
+                </NavLink>
+              ) : null}
             </div>
-          </NavLink>
-          <NavLink onClick={handleClickOpen}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <AddBoxIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-              Add Contact
-            </div>
-          </NavLink>
+          </div>
           <div>
             <Dialog
               fullScreen
@@ -183,6 +210,32 @@ function Navbar() {
             </Dialog>
           </div>
         </Toolbar>
+        <div>
+          {user ? (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h5>{user.email}</h5>
+              <CardMedia
+                component="img"
+                sx={{ width: 30, height: 30, borderRadius: "50%" }}
+                image="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBlb3BsZXxlbnwwfDB8MHx8&auto=format&fit=crop&w=400&q=60"
+                alt="photo"
+              />
+              <LogoutIcon style={{ marginLeft: "10px" }} onClick={logout} />
+            </div>
+          ) : (
+            <NavLink
+              style={{
+                marginLeft: "500px",
+                display: "flex",
+                alignItems: "center",
+              }}
+              to="/login"
+            >
+              <h4>login</h4>
+              <LoginIcon style={{ marginLeft: "10px" }} />
+            </NavLink>
+          )}
+        </div>
       </Container>
     </AppBar>
   );
