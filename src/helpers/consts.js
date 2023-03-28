@@ -1,4 +1,4 @@
-export const API = "http://localhost:8002/contacts";
+export const API = "https://contact-book-db.vercel.app/contacts";
 
 export const ACTIONS = {
   GET_CONTACTS: "GET_CONTACTS",
