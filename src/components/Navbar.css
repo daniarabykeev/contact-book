@@ -1,0 +1,11 @@
+.add-icon {
+  display: none;
+}
+@media (max-width: 500px) {
+  .add-icon {
+    display: block;
+  }
+  .add-text {
+    display: none;
+  }
+}

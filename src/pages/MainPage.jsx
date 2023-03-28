@@ -11,7 +11,7 @@ function MainPage() {
   }, []);
   return (
     <div>
-      {user ? (
+      {user && user.email === "daniarabykeev@gmail.com" ? (
         <div
           style={{
             marginLeft: "50px",

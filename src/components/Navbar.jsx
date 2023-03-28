@@ -15,6 +15,8 @@ import { CardMedia, TextField } from "@mui/material";
 import { authContext } from "../contexts/AuthContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
+import AddIcon from "@mui/icons-material/Add";
+import "./Navbar.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -43,6 +45,7 @@ function Navbar() {
     handleClose();
     navigate("/");
   }
+  console.log(user);
 
   function handleChange(e) {
     let obj = {
@@ -78,9 +81,10 @@ function Navbar() {
               justifyContent: "space-between",
             }}
           >
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <NavLink style={{ marginRight: "50px" }} to="/">
                 <div
+                  className="home"
                   style={{
                     display: "flex",
                     justifyContent: "center",
@@ -105,7 +109,8 @@ function Navbar() {
                     <AddBoxIcon
                       sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
                     />
-                    Add Contact
+                    <AddIcon className="add-icon" />
+                    <h5 className="add-text">Add Contact</h5>
                   </div>
                 </NavLink>
               ) : null}
@@ -213,7 +218,8 @@ function Navbar() {
         <div>
           {user ? (
             <div style={{ display: "flex", alignItems: "center" }}>
-              <h5>{user.email}</h5>
+              <h5 className="navbar-user-mail">{user.email}</h5>
+              {/* <h5 className="navbar-user-name">{user.displayName}</h5> */}
               <CardMedia
                 component="img"
                 sx={{ width: 30, height: 30, borderRadius: "50%" }}
@@ -225,7 +231,7 @@ function Navbar() {
           ) : (
             <NavLink
               style={{
-                marginLeft: "500px",
+                // marginLeft: "500px",
                 display: "flex",
                 alignItems: "center",
               }}

@@ -82,12 +82,12 @@ export default function ContactsCard({ item }) {
               flexDirection: "column",
             }}
           >
-            <IconButton>
-              <EditIcon
-                onClick={(e) => {
-                  navigate(`/edit/${item.id}`);
-                }}
-              />
+            <IconButton
+              onClick={(e) => {
+                navigate(`/edit/${item.id}`);
+              }}
+            >
+              <EditIcon />
             </IconButton>
             <IconButton
               onClick={(e) => {
